@@ -17,6 +17,16 @@ class ViewController: UIViewController {
         datePicker = UIDatePicker()
         datePicker?.datePickerMode = .date
         textFieldDate.inputView = datePicker
+        
+        datePicker?.addTarget(self, action: #selector(self.getDate(picker:)), for: .valueChanged)
+    }
+    
+    @objc func getDate(picker:UIDatePicker){
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        let date = dateFormatter.string(from: picker.date)
+        print(date)
+        view.endEditing(true)
     }
 
 
